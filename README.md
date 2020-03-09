@@ -9,7 +9,9 @@ Allows you to search in storage, bill ingredient & outfit filters.
 
 Has various Mod options allowing you to lay out the search as you prefer.
 
-![alt tag](https://raw.githubusercontent.com/DoctorVanGogh/StorageSearch/master/About/preview.png)
+![Preview](https://raw.githubusercontent.com/DoctorVanGogh/StorageSearch/master/About/preview.png)
+
+Simplified Chinese translation by @HawnHan
 
 ## Powered by Harmony
 

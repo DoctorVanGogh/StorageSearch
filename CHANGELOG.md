@@ -1,4 +1,4 @@
-# 3.0 
+# 2.4
 
 updates for rimworld 1.1 / 1.0 compatibility
 

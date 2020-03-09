@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <name>Rimworld Search Agency</name>
-  <author>DoctorVanGogh, Killface, meonester</author>
+  <author>DoctorVanGogh, Killface, meonester, HawnHan</author>
    <supportedVersions>
       <li>1.0</li>
       <li>1.1</li>
@@ -20,6 +20,7 @@
 
     Includes Hauling Hysteresis by Vendan https://ludeon.com/forums/index.php?topic=26958.0
 
+    Simplified Chinese translation by HawnHan
   </description>
   <modDependenciesByVersion>
       <v1.1>

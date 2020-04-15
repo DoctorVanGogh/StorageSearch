@@ -34,5 +34,5 @@
   </modDependenciesByVersion>
   <loadAfter>
     <li>brrainz.harmony</li>
-  </loadAfter>  
+  </loadAfter>
 </ModMetaData>

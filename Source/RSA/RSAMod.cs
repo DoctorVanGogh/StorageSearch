@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using HarmonyLib;
 using RimWorld;
@@ -20,12 +21,14 @@ namespace RSA
 
         private RSACoreMod baseFilterSearchMod;
 
+
+
         public RSAMod(ModContentPack content) : base(content)
         {
             Harmony harmonyInstance = new Harmony("RSA");
             harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());              // just use all [HarmonyPatch] decorated classes       
 
-            bool modifiedExtendedCrafting = TryDetourExtendedCrafting(harmonyInstance);
+            bool modifiedExtendedCrafting = ExtendedCrafting.TryDetourExtendedCrafting(harmonyInstance);
 
             Log.Message($"RSA Main {typeof(RSAMod).Assembly.GetName().Version} loaded {(modifiedExtendedCrafting ? " - (ExtendedCrafting detected)" : null)}...");
                 
@@ -37,7 +40,11 @@ namespace RSA
                 baseFilterSearchMod.SupressSettings = true;
 
             this.GetSettings<Settings>();
+
+            HoldMultipleThings.TryEnableIHoldMultipleThingsLogic();
         }
+
+
 
         public override string SettingsCategory() {
             return RSAKeys.RSA.Translate();
@@ -69,15 +76,7 @@ namespace RSA
             list.End();
         }
 
-        private static bool TryDetourExtendedCrafting(Harmony harmony) {
-            var ecAssembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == "AcEnhancedCrafting");
-            if (ecAssembly != null) {
-                MethodInfo mi = ecAssembly.GetType("AlcoholV.Overriding.Dialog_BillConfig").GetMethod(nameof(RimWorld.Dialog_BillConfig.DoWindowContents));
-                harmony.Patch(mi, new HarmonyMethod(typeof(Dialog_BillConfig_DoWindowContents), nameof(Dialog_BillConfig_DoWindowContents.Before_DoWindowContents)), null, null);
-                return true;
-            }
-            return false;
-        }
+
         
     }
 }
